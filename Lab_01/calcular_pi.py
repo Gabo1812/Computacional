@@ -1,27 +1,23 @@
-#!/usr/bin/env python
-#Vamos a resolver la integral de 1/(1+x**2) de 0 a 1
-#Usando el cambio de x = tanp
-import numpy as np
+#!/usr/bin/env python3
+#Gabriel Alvarez Castrillo C00368
+#Vamos a resolver la integral de 4/(1+x**2) de 0 a 1 para encontrar pi
 #Espacio de Funciones
-def Int_Riemann(f,a,b,N):
-    h = (b-a)/N
-    vect = h*f
+def Int_Riemann(func,x_inf,x_sup,steps):
+    h = (x_sup-x_inf)/steps #Distancia entre pasos
     I = 0
-    for i in range(N):
-        I += vect[i]
+    for i in range(steps):
+        I += func(x_inf+(i+0.5)*h)*h #Evaluamos la func. en cada paso
     return I
+#Función a Integrar
 def func_integrar(x):
-    f = 4/(1+x**2)
-    return f
+    return 4/(1+x**2)
+
 #Main code
-N = 100
+step = 1000
 x_inf = 0
 x_sup = 1
-h = (x_sup - x_inf)/N
-x = np.linspace(x_inf+h/2,x_sup,N)
-f = func_integrar(x)
-print(Int_Riemann(f,x_inf,x_sup,N))
-print(x)# para controlar
+print(Int_Riemann(func_integrar,x_inf,x_sup,step))
+
 
 
 

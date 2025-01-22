@@ -1,4 +1,5 @@
 #!/bin/bash
+#Gabriel Alvarez C00368
 # Asigno la cantidad de numeros aleatorios N a utilizar y la cantidad de archivos i que quiero utilizar
 N=$1  #Primer argumento de la func.
 i=$2  #Segundo argumento de la func.

@@ -1,4 +1,5 @@
 #!/bin/bash
+#Gabriel Alvarez C00368
 
 # Definir el archivo de salida
 output_file="rand_combined.dat"

@@ -1,7 +1,7 @@
 #include <iostream>
 // Definimos la función a integrar
 double func_integrar(double x) {
-    return 4 / (1 + x * x);
+    return 4.0 / (1.0 + x * x);
 }
 
 // Función para la integración numérica utilizando la regla del trapecio
@@ -9,17 +9,18 @@ double Int_Riemann(double(*func)(double), double lim_inf, double lim_sup, int st
     double h = (lim_sup - lim_inf) / steps;
     double I = 0;
     for (int i = 0; i < steps; ++i) {
-        I += func(lim_inf + (i + 0.5) * h) * h;
+        I += func(lim_inf + (i + 0.5) * h);
     }
-    return I;
+    return I*h;
 }
 
 int main() {
-    int N = 100;  // Número de subintervalos
+    int N = 100000;  // Número de subintervalos
     double x_inf = 0;
     double x_sup = 1;
 
     // Imprimimos el resultado
+    std::cout.precision(12); // Definir decimales de precision
     std::cout << Int_Riemann(func_integrar, x_inf, x_sup, N) << std::endl;
     return 0;
 }

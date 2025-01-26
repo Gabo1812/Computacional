@@ -1,0 +1,14 @@
+site_name: Sumando Ando
+
+theme:
+  name: "material"
+
+nav:
+  - index.md
+  - reference.md
+  - explanation.md
+  - tutorials.md
+  - how-to-guides
+
+plugins: 
+  - mkdocstrings

@@ -1,4 +1,4 @@
-def sum(a, b):
+def sum(a, b)-> float:
     """Sum of two floats.
 
     Examples:

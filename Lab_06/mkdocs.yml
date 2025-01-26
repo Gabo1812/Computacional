@@ -8,7 +8,7 @@ nav:
   - reference.md
   - explanation.md
   - tutorials.md
-  - how-to-guides
+  - how-to-guides.md
 
 plugins: 
   - mkdocstrings

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-// Porqué pongo la firma de esta función al inicio?
+// Porqué pongo la firma de esta función al inicio? Se declara para que el compilador conozca la función antes de su definición
 void print_mat(std::vector<double> &mat, int &rows, int &cols);
 
 int main(int argc, char* argv[]){
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
   return 0;
 }
 
-// Porqué la firma de esta función usa & para sus argumentos?
+// Porqué la firma de esta función usa & para sus argumentos? El uso de & pasa los argumentos por referencia, evitando copias innecesarias y permitiendo modificar los valores
 void print_mat(std::vector<double> &mat, int &rows, int &cols){
   for(int i = 0; i < rows; ++i){
     for(int j = 0; j < cols; ++j){

@@ -1,3 +1,4 @@
+#Introduction
 # Bienvenido a Cuadratura Gaussiana by Gabriel Alvarez
 
 Este es un sitio dedicado a la explicación de los conceptos y la implementación de la técnica de cuadratura de Gauss para la integración numérica.
@@ -13,6 +14,5 @@ La cuadratura gaussiana es un método de integración numérica utilizado para c
 - [Referencia](reference.md)
 - [Explicación](explanation.md)
 - [Tutoriales](tutorials.md)
-- [Guías de cómo hacerlo](how-to-guides.md)
 
-Para más información ver: https://github.com/Gabo1812/Gaussian_Quadrature.git
+Para más información, visita [este enlace](https://github.com/Gabo1812/Gaussian_Quadrature.git).

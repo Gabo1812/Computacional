@@ -1,4 +1,4 @@
-Esta página se refiere a la documentación de las funciones del módulo.
-::: sum.sum
+En esta sección se detallan las funciones principales utilizadas en la implementación de la cuadratura gaussiana.
+::: cuadrature.cuadrature
 
 

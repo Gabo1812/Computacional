@@ -1,5 +1,18 @@
-# Bienvenido a la documentación de Sum, ejemplo by Gabriel Alvarez
+# Bienvenido a Cuadratura Gaussiana by Gabriel Alvarez
 
-Esta documentación se refiere al módulo Sum, el cual añade dos objetos o estructuras de datos en Python, en este caso flotantes y los suma.
+Este es un sitio dedicado a la explicación de los conceptos y la implementación de la técnica de cuadratura de Gauss para la integración numérica.
 
-Para más información ver: https://github.com/Gabo1812/Sum.git
+Aquí encontrarás ejemplos de código, teorías y tutoriales prácticos para aprender a usar este método.
+
+## ¿Qué es la Cuadratura Gaussiana?
+
+La cuadratura gaussiana es un método de integración numérica utilizado para calcular integrales de funciones. A diferencia de los métodos tradicionales de integración, la cuadratura gaussiana utiliza puntos de evaluación y pesos que están optimizados para obtener una alta precisión en el cálculo de integrales.
+
+## Contenido
+
+- [Referencia](reference.md)
+- [Explicación](explanation.md)
+- [Tutoriales](tutorials.md)
+- [Guías de cómo hacerlo](how-to-guides.md)
+
+Para más información ver: https://github.com/Gabo1812/Gaussian_Quadrature.git

@@ -1,4 +1,4 @@
-site_name: Sumando Ando
+site_name: Cuadratura Gaussiana
 
 theme:
   name: "material"
@@ -12,3 +12,11 @@ nav:
 
 plugins: 
   - mkdocstrings
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

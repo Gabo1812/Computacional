@@ -27,25 +27,25 @@ int main(int argc, char* argv[]){
   // Las siguientes operaciones se encargan de balancear la carga
   // en caso de que "n" no sea un múltiplo de del número de procesos
   // Su código aquí
-int nlocal = n/size;
-int rest = n%size;
+  int nlocal = n/size;
+  int rest = n%size;
 
   // Ahora, si existe un resto y el rango es *menor* que el resto,
   // le sumamos uno a nlocal:
   // Su código aquí
-if (rest && rank <= rest);
-  nlocal++;
+  if (rest && rank <= rest);
+    nlocal++;
 
   // Definimos un punto de comienzo y le llamamos "start"
-int start = nlocal*rank;
+  int start = nlocal*rank;
   // Ahora, si existe un resto y el rango es *mayor o igual* que el resto,
   // le sumamos el resto a start. Esto se debe a que los rangos menores son los
   // los que recibieron un trozo mas grande
   // Su código aquí
-if (rest && rank >= rest);
-  start += rest;
+  if (rest && rank >= rest);
+    start += rest;
   // Ahora definimos un punto final
-int end = start +nlocal; 
+  int end = start +nlocal; 
 
   // Cálculo de la integral
   // La suma local es local a cada rango
@@ -62,7 +62,7 @@ int end = start +nlocal;
   // Vamos a usar el proceso de rango 0 para coleccionar los resultados intermedios
   double global_sum;
   // Reducción aquí
-  //MPI_Reduce(...);
+  MPI_Reduce(&local_sum,&global_sum,1,MPI_DOUBLE,MPI_SUM,0,MPI_COMM_WORLD);
 
   double time_2 = MPI_Wtime();
   // Ahora el rango 0 contiene la suma total, los otros procesos no contienen este valor!

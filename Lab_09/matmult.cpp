@@ -76,10 +76,10 @@ int main(int argc, char* argv[]){
   double time_2 = seconds();
 
   // Laboratorio: Cuente el número de hilos usando la API e imprima el resultado al final del programa
-  std::cout << "# Num Threads: " << num_threads << std::endl;
-  std::cout << "# Time: " << time_2 - time_1 << std::endl;
   std::cout << "Resultado C = " << std::endl;
-  print_mat(C, l, m); 
+  print_mat(C, l, m);
+  std::cout << "# Num Threads: " << num_threads << std::endl;
+  std::cout << "# Time: " << time_2 - time_1 << std::endl; 
   return 0;
 }
 

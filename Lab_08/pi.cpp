@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <sys/time.h>
 #include <vector>
-#include <cstdio>
+#include <cstdio> 
 #include <cstdlib>
 
 double seconds()
@@ -35,13 +35,13 @@ double Int_Riemann(double(*func)(double), double lim_inf, double lim_sup, int st
 }
 
 // Función para hacer la gráfica con gnuplot
-void plot_graph(const std::vector<int>& threads, const std::vector<double>& times) {
+void plot_grafica(const std::vector<int>& threads, const std::vector<double>& times) {
     FILE* gnuplot = popen("gnuplot -persistent", "w");
     if (gnuplot) {
         fprintf(gnuplot, "set title 'Escalabilidad con OpenMP'\n");
         fprintf(gnuplot, "set xlabel 'Número de hilos'\n");
-        fprintf(gnuplot, "set ylabel 'Escalabilidad (segundos)'\n");
-        fprintf(gnuplot, "plot '-' with linespoints title 'Tiempo vs Hilos'\n");
+        fprintf(gnuplot, "set ylabel 'Escalabilidad '\n");
+        fprintf(gnuplot, "plot '-' with linespoints title ' Escalabilidad vs Hilos'\n");
 
         // Enviar los datos a gnuplot
         for (size_t i = 0; i < threads.size(); ++i) {
@@ -77,7 +77,7 @@ int main() {
         
         std::cout << "Threads: " << num_threads << " Time: " << total_time << " seconds" << std::endl;
     }
-    //Normalizamos el tiempo haciendo tiempo serial entre tiempo paralelo
+    // Normalizamos el tiempo haciendo tiempo serial entre tiempo paralelo
 
     std::vector<double> normalized_times = times;
     double serial_time = times[0];
@@ -86,7 +86,7 @@ int main() {
     }
 
     // Grafica de escalabilidad con tiempo normalizado
-    plot_graph(threads_list,normalized_times);
+    plot_grafica(threads_list,normalized_times);
 
 
     return 0;

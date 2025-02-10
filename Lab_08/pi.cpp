@@ -40,7 +40,7 @@ void plot_graph(const std::vector<int>& threads, const std::vector<double>& time
     if (gnuplot) {
         fprintf(gnuplot, "set title 'Escalabilidad con OpenMP'\n");
         fprintf(gnuplot, "set xlabel 'Número de hilos'\n");
-        fprintf(gnuplot, "set ylabel 'Tiempo de ejecución (segundos)'\n");
+        fprintf(gnuplot, "set ylabel 'Escalabilidad (segundos)'\n");
         fprintf(gnuplot, "plot '-' with linespoints title 'Tiempo vs Hilos'\n");
 
         // Enviar los datos a gnuplot
@@ -56,10 +56,10 @@ void plot_graph(const std::vector<int>& threads, const std::vector<double>& time
 }
 
 int main() {
-    int N = 1000000;   // Número de subintervalos
+    int N = 10000000;   // Número de subintervalos
     double x_inf = 0; //Limite inferior de la integral
     double x_sup = 1; //Limite superior de la integral
-    std::vector<int> threads_list = {1, 2, 3, 4, 5, 6, 12}; // Número de hilos a probar
+    std::vector<int> threads_list = {1, 2, 3, 4, 5, 6}; // Número de hilos a probar
     std::vector<double> times;  // Almacenar los tiempos de ejecución
 
     // Imprimimos el valor de pi
@@ -77,16 +77,16 @@ int main() {
         
         std::cout << "Threads: " << num_threads << " Time: " << total_time << " seconds" << std::endl;
     }
-    //Normalizamos dividiendo entre el tiempo para un solo nucleo
+    //Normalizamos el tiempo haciendo tiempo serial entre tiempo paralelo
 
     std::vector<double> normalized_times = times;
+    double serial_time = times[0];
     for (size_t i = 0; i < times.size(); ++i) {
-    normalized_times[i] /= times[0];
+    normalized_times[i] = serial_time / times[i];
     }
 
-
     // Grafica de escalabilidad con tiempo normalizado
-    plot_graph(threads_list,times);
+    plot_graph(threads_list,normalized_times);
 
 
     return 0;

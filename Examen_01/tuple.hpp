@@ -1,7 +1,7 @@
 #ifndef TUPLE_HPP     // Verifica si TUPLE_HPP no ha sido definido aún
 #define TUPLE_HPP    // Define TUPLE_HPP para evitar múltiples inclusiones
 #include <iostream> // Para usar size_t
-//Acá viene la declaracion de la clase Complex
+//Acá viene la declaracion de la clase Tuple
 class Tuple{  
   private:
     double* data;   // Puntero a la memoria donde se almacenan los valores

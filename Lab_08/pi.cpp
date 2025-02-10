@@ -60,9 +60,9 @@ int main() {
     double x_inf = 0; //Limite inferior de la integral
     double x_sup = 1; //Limite superior de la integral
     std::vector<int> threads_list = {1, 2, 3, 4, 5, 6, 12}; // Número de hilos a probar
-    std::vector<double> times;                        // Almacenar los tiempos de ejecución
+    std::vector<double> times;  // Almacenar los tiempos de ejecución
 
-    // Imprimimos el resultado
+    // Imprimimos el valor de pi
     std::cout.precision(12); // Definir decimales de precision
     std::cout << "El valor de pi es: "<<Int_Riemann(func_integrar, x_inf, x_sup, N) << std::endl;
  
@@ -77,9 +77,16 @@ int main() {
         
         std::cout << "Threads: " << num_threads << " Time: " << total_time << " seconds" << std::endl;
     }
+    //Normalizamos dividiendo entre el tiempo para un solo nucleo
 
-    // Grafica de escalabilidad
-    plot_graph(threads_list, times);
+    std::vector<double> normalized_times = times;
+    for (size_t i = 0; i < times.size(); ++i) {
+    normalized_times[i] /= times[0];
+    }
+
+
+    // Grafica de escalabilidad con tiempo normalizado
+    plot_graph(threads_list,times);
 
 
     return 0;

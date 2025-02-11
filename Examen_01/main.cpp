@@ -25,19 +25,34 @@ int main() {
     std::cout << "Esta es la copia de la tupla t2 usando el operador de asignacion, llamada t4: "; t4.print();
     std::cout << "Esta la cantidad de elementos de la tupla t2: "<< t2.getSize()<< std::endl;
     std::cout << "Este es el elemento en la posición 0 de la tupla t2: " << t2.getElement(0) << std::endl;
+    
     // Pruebas de sobrecarga de operadores
     try {
         Tuple sum = t2 + t4;
-        Tuple diff = t2 - t4;
-        Tuple prod = t2 * t4;
-        Tuple quot = t2 / t4;
-
         std::cout << "Suma de tuplas t2 y t4: "; sum.print();
-        std::cout << "Resta de tuplas t2 y t4: "; diff.print();
-        std::cout << "Multiplicacion de tuplas t2 y t4: "; prod.print();
-        std::cout << "Division de tuplas t2 y t4: "; quot.print();
     } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Error en suma: " << e.what() << std::endl;
+    }
+
+    try {
+        Tuple diff = t2 - t4;
+        std::cout << "Resta de tuplas t2 y t4: "; diff.print();
+    } catch (const std::exception& e) {
+        std::cerr << "Error en resta: " << e.what() << std::endl;
+    }
+
+    try {
+        Tuple prod = t2 * t4;
+        std::cout << "Multiplicación de tuplas t2 y t4: "; prod.print();
+    } catch (const std::exception& e) {
+        std::cerr << "Error en multiplicación: " << e.what() << std::endl;
+    }
+
+    try {
+        Tuple quot = t2 / t4;
+        std::cout << "División de tuplas t2 y t4: "; quot.print();
+    } catch (const std::exception& e) {
+        std::cerr << "Error en división: " << e.what() << std::endl;
     }
 
     return 0;

@@ -84,7 +84,7 @@ Tuple Tuple::operator+(const Tuple& other) const {
 
     Tuple result(size);
     for (std::size_t i = 0; i < size; i++) {
-        result.data[i] = data[i] + other.data[i];
+        result.data[i] = data[i] + other.data[i]; //suma elemento a elemento
     }
     return result;
 }
@@ -97,7 +97,7 @@ Tuple Tuple::operator-(const Tuple& other) const {
 
     Tuple result(size);
     for (std::size_t i = 0; i < size; i++) {
-        result.data[i] = data[i] - other.data[i];
+        result.data[i] = data[i] - other.data[i]; //resta elemento a elemento
     }
     return result;
 }
@@ -110,7 +110,7 @@ Tuple Tuple::operator*(const Tuple& other) const {
 
     Tuple result(size);
     for (std::size_t i = 0; i < size; i++) {
-        result.data[i] = data[i] * other.data[i];
+        result.data[i] = data[i] * other.data[i]; //multiplica elemento a elemento
     }
     return result;
 }
@@ -121,12 +121,18 @@ Tuple Tuple::operator/(const Tuple& other) const {
         throw std::invalid_argument("Los objetos deben tener el mismo tamaño.");
     }
 
-    Tuple result(size);
+    // Verifica que no haya ceros en la tupla 'other'
     for (std::size_t i = 0; i < size; i++) {
         if (other.data[i] == 0) {
-            throw std::runtime_error("División por cero.");
+            throw std::runtime_error("División por cero en la tupla.");
         }
+    }
+
+    // Procede con la división elemento a elemento si no hay ceros
+    Tuple result(size);
+    for (std::size_t i = 0; i < size; i++) {
         result.data[i] = data[i] / other.data[i];
     }
     return result;
 }
+

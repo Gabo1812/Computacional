@@ -20,13 +20,12 @@ int main(){
 
   // Laboratorio
   // Asegúrese de que entiende lo que hace la siguiente línea
-  int peer = (rank == 0) ? 1 : 0; // basicamnete if else. if rank==0 -> peer = 1, else peer = 0
-       MPI_Sendrecv(&sendbuff, 1, MPI_INT, peer, tag,
-                    &recvbuff, 1, MPI_INT, peer, tag, MPI_COMM_WORLD, &stat);
-
+  int peer = (rank == 0) ? 1 : 0; // Establece 'peer' a 1 si el rank es 0, de lo contrario a 0.
   // Implemente el Send-Recv
   // Su código aquí
-
+  MPI_Sendrecv(&sendbuff, 1, MPI_INT, peer, tag,  // Enviar 'sendbuff' al proceso 'peer'
+    &recvbuff, 1, MPI_INT, peer, tag,  // Recibir en 'recvbuff' del proceso 'peer'
+    MPI_COMM_WORLD, &stat);           // Usar el comunicador global y almacenar el estado en 'stat'
   std::cout << "I'm: " << rank << " and my recv is: " << recvbuff << std::endl;
 
   MPI_Finalize();

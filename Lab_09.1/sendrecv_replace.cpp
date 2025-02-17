@@ -20,12 +20,10 @@ int main(){
 
   // hay que usar el mismo buffer
   int peer = (rank == 0) ? 1 : 0;
-
-	MPI_Sendrecv_replace(&buff, 1, MPI_INT, peer, tag, peer, tag, MPI_COMM_WORLD, &stat);
-
   // Implemente el Send-Recv "in-place": MPI_Sendrecv_replace
   // Su código aquí
-
+  MPI_Sendrecv_replace(&buff, 1, MPI_INT, peer, tag, peer, tag, MPI_COMM_WORLD, &stat);
+  // Envía 'buff' al proceso "peer" y recibe datos del proceso "peer" en el mismo buffer
   std::cout << "I'm: " << rank << " and my recv is: " << buff << std::endl;
 
   MPI_Finalize();

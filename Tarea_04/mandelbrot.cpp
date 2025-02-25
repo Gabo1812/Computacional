@@ -27,26 +27,28 @@ int main(){
   double minY = -1.0, maxY = 1.0;
 
   // Rutina principal para generar e imprimir el conjunto
-  #pragma omp parallel for
+  #pragma omp parallel for ordered
   for(int y = 0; y < height; ++y){
-    std::string line;  // Buffer local para almacenar la línea antes de imprimir
-    for(int x = 0; x < width; ++x){
-      // Mapeo de pixeles a número complejo
-      std::complex<double> c( minX + (maxX - minX) * x / width,
-                              minY + (maxY - minY) * y / height );
+    #pragma omp ordered // Asegura que se impriman las líneas en orden
+    {
+      for(int x = 0; x < width; ++x){
+        // Mapeo de pixeles a número complejo
+        std::complex<double> c( minX + (maxX - minX) * x / width,
+                                minY + (maxY - minY) * y / height );
 
-      // Cálculo del número de iteraciones
-      int n = mandelbrot(c, max_iter);
+        // Cálculo del número de iteraciones
+        int n = mandelbrot(c, max_iter);
 
-      // Se imprime un caracter dependiendo del número de iteraciones
-      if(n == max_iter){
-        std::cout << '#'; // Dentro del conjunto de Mandelbrot
-      } 
-      else{
-        std::cout << '.'; // Fuera del conjunto de Mandelbrot
+        // Se imprime un caracter dependiendo del número de iteraciones
+        if(n == max_iter){
+          std::cout << '#'; // Dentro del conjunto de Mandelbrot
+        } 
+        else{
+          std::cout << '.'; // Fuera del conjunto de Mandelbrot
+        }
       }
+      std::cout << std::endl; // Siguiente línea en y
     }
-    std::cout << std::endl; // Siguiente línea en y
   }
 
   return 0;

@@ -21,10 +21,18 @@ int main(int argc, char** argv) {
         return 1;
     }
     
-    int N; 
+    int N; // Tamaño de los vectores A y B
     try {
-        N = std::stoi(argv[1]); // Tamaño de los vectores A y B
+        N = std::stoi(argv[1]); // Convierte el argumento a entero
     } catch (const std::invalid_argument& e) {
+        if (rank == 0) {
+            std::cerr << "Error: El argumento debe ser un número entero válido." << std::endl;
+        }
+        MPI_Finalize();
+        return 1;
+    }
+    
+    if (N % size != 0) {
         if (rank == 0) {
             std::cerr << "Error: El tamaño del vector debe ser múltiplo del número de procesos." << std::endl;
         }

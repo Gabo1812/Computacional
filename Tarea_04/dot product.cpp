@@ -8,9 +8,9 @@ int main(int argc, char** argv) {
     MPI_Init(&argc, &argv); // Inicializa MPI
 
     // Inicializa MPI y obtiene el rango y número de procesos
-    int rank, size;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank); // Obtiene el identificador del proceso
+    int size, rank;
     MPI_Comm_size(MPI_COMM_WORLD, &size); // Obtiene el número total de procesos
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank); // Obtiene el identificador del proceso
     
     // Verifica si se proporcionó un argumento (tamaño del vector)
     if (argc != 2) {
@@ -53,17 +53,17 @@ int main(int argc, char** argv) {
     MPI_Scatter(b.data(), nlocal, MPI_INT, local_b.data(), nlocal, MPI_INT, 0, MPI_COMM_WORLD);
     
     // Cada proceso calcula su producto punto local
-    int productoLocal = 0;
+    int productoInternoLocal  = 0;
     for (int i = 0; i < nlocal; i++) {
-        productoLocal += local_a[i] * local_b[i];
+        productoInternoLocal  += local_a[i] * local_b[i];
     }
     
     // Realiza una reducción para obtener el producto punto total en el proceso 0
-    int productoTotal = 0;
-    MPI_Reduce(&productoLocal, &productoTotal, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+    int productoInternoTotal  = 0;
+    MPI_Reduce(&productoInternoLocal , &productoInternoTotal , 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
     
     if (rank == 0) { // Solo el proceso 0 muestra el resultado
-        std::cout << "Producto punto total: " << productoTotal << std::endl;
+        std::cout << "Producto punto total: " << productoInternoTotal  << std::endl;
     }
     
     MPI_Finalize(); // Finaliza MPI

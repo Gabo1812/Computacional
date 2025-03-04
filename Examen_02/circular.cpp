@@ -15,16 +15,16 @@ int main(int argc, char* argv[]) {
 
     // Realizamos N iteraciones (donde N es el número de procesos)
     for (int iteration = 0; iteration < size; ++iteration) {
-        // Enviar el valor de buffer a proceso siguiente
+        // El proceso p envía su valor en buffer al siguiente proceso
         int send_rank = buffer;
 
         if (rank == size - 1) { // El último proceso envía al primer proceso
-            MPI_Send(&send_rank, 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
-            MPI_Recv(&buffer, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Send(&send_rank, 1, MPI_INT, 0, 0, MPI_COMM_WORLD); // Envío bloqueante
+            MPI_Recv(&buffer, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE); // Recepción bloqueante
         } else {
-            // Enviar al siguiente proceso y recibir del anterior
-            MPI_Send(&send_rank, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
-            MPI_Recv(&buffer, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            // El proceso p envía al siguiente proceso y recibe del anterior
+            MPI_Send(&send_rank, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD); // Envío bloqueante
+            MPI_Recv(&buffer, 1, MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE); // Recepción bloqueante
         }
 
         // En la iteración, el proceso 0 escribe en terminal el contenido de su buffer

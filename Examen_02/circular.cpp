@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
 
         // En la iteración, el proceso 0 escribe en terminal el contenido de su buffer
         if (rank == 0) {
-            std::cout << "Iteración " << iteration << ": Buffer en el proceso 0 = " << buffer << std::endl;
+            std::cout << "Iteración " << iteration << ": Buffer en el proceso 0 => " << buffer << std::endl;
         }
     }
 
